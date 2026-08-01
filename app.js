@@ -111,3 +111,27 @@ buatGrafik();
 }
 
 tampilkanRiwayat();
+let installPrompt;
+
+window.addEventListener("beforeinstallprompt", (e) => {
+
+    e.preventDefault();
+
+    installPrompt = e;
+
+    document.getElementById("installBtn").style.display = "block";
+
+});
+
+
+document.getElementById("installBtn").addEventListener("click", async () => {
+
+    if (installPrompt) {
+
+        installPrompt.prompt();
+
+        installPrompt = null;
+
+    }
+
+});
