@@ -1,5 +1,5 @@
-let pemasukan = 0;
-let pengeluaran = 0;
+let pemasukan = Number(localStorage.getItem("pemasukan")) || 0;
+let pengeluaran = Number(localStorage.getItem("pengeluaran")) || 0;
 
 function tambahTransaksi() {
 
@@ -14,7 +14,11 @@ function tambahTransaksi() {
     } 
     else {
         alert("Jenis tidak sesuai");
+        return;
     }
+
+    localStorage.setItem("pemasukan", pemasukan);
+    localStorage.setItem("pengeluaran", pengeluaran);
 
     updateTampilan();
 }
@@ -32,3 +36,5 @@ function updateTampilan() {
     document.getElementById("pengeluaran").innerHTML =
         "Rp " + pengeluaran.toLocaleString();
 }
+
+updateTampilan();
