@@ -1,8 +1,39 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+    background: #f2f2f7;
+    margin: 0;
+    padding: 20px;
 }
 
 h1 {
     text-align: center;
+    color: #222;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+    margin: 0;
+    color: #666;
+}
+
+.card h2 {
+    margin-top: 10px;
+    font-size: 28px;
+}
+
+button {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 15px;
+    background: #007aff;
+    color: white;
+    font-size: 18px;
 }
