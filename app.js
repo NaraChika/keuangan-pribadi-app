@@ -38,3 +38,57 @@ function updateTampilan() {
 }
 
 updateTampilan();
+let riwayat = JSON.parse(localStorage.getItem("riwayat")) || [];
+
+function tambahTransaksi() {
+
+    let jenis = prompt("Masukkan jenis: pemasukan / pengeluaran");
+    let jumlah = Number(prompt("Masukkan jumlah uang"));
+
+    if (jenis !== "pemasukan" && jenis !== "pengeluaran") {
+        alert("Jenis tidak sesuai");
+        return;
+    }
+
+    let transaksi = {
+        jenis: jenis,
+        jumlah: jumlah,
+        tanggal: new Date().toLocaleDateString()
+    };
+
+    riwayat.push(transaksi);
+
+    localStorage.setItem("riwayat", JSON.stringify(riwayat));
+
+    if (jenis === "pemasukan") {
+        pemasukan += jumlah;
+    } else {
+        pengeluaran += jumlah;
+    }
+
+    localStorage.setItem("pemasukan", pemasukan);
+    localStorage.setItem("pengeluaran", pengeluaran);
+
+    updateTampilan();
+    tampilkanRiwayat();
+}
+
+function tampilkanRiwayat(){
+
+    let daftar = document.getElementById("riwayat");
+    daftar.innerHTML = "";
+
+    riwayat.forEach(item => {
+
+        daftar.innerHTML += `
+        <li>
+        ${item.tanggal} -
+        ${item.jenis} :
+        Rp ${item.jumlah.toLocaleString()}
+        </li>
+        `;
+
+    });
+}
+
+tampilkanRiwayat();
