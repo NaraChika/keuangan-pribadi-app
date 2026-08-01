@@ -1,17 +1,34 @@
 let pemasukan = 0;
 let pengeluaran = 0;
 
-function tambahPemasukan(jumlah) {
-    pemasukan += jumlah;
-    hitungSaldo();
+function tambahTransaksi() {
+
+    let jenis = prompt("Masukkan jenis: pemasukan / pengeluaran");
+    let jumlah = Number(prompt("Masukkan jumlah uang"));
+
+    if (jenis === "pemasukan") {
+        pemasukan += jumlah;
+    } 
+    else if (jenis === "pengeluaran") {
+        pengeluaran += jumlah;
+    } 
+    else {
+        alert("Jenis tidak sesuai");
+    }
+
+    updateTampilan();
 }
 
-function tambahPengeluaran(jumlah) {
-    pengeluaran += jumlah;
-    hitungSaldo();
-}
+function updateTampilan() {
 
-function hitungSaldo() {
     let saldo = pemasukan - pengeluaran;
-    console.log("Saldo saat ini: Rp " + saldo);
+
+    document.getElementById("saldo").innerHTML =
+        "Rp " + saldo.toLocaleString();
+
+    document.getElementById("pemasukan").innerHTML =
+        "Rp " + pemasukan.toLocaleString();
+
+    document.getElementById("pengeluaran").innerHTML =
+        "Rp " + pengeluaran.toLocaleString();
 }
