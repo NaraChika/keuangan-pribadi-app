@@ -77,6 +77,25 @@ function tampilkanRiwayat(){
 
     let daftar = document.getElementById("riwayat");
     daftar.innerHTML = "";
+    let grafik;
+
+function buatGrafik(){
+
+    let ctx = document.getElementById("grafik");
+
+    grafik = new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: ["Pemasukan", "Pengeluaran"],
+            datasets: [{
+                label: "Keuangan",
+                data: [pemasukan, pengeluaran]
+            }]
+        }
+    });
+}
+
+buatGrafik();
 
     riwayat.forEach(item => {
 
